@@ -1,6 +1,7 @@
 import cors from 'cors'
 import dotenv from 'dotenv'
 import express from 'express'
+import recipies from '../src/routes/recipies'
 
 
 const envFile =
@@ -13,6 +14,9 @@ app.use(
   })
 )
 app.use(express.json())
+app.use('/recipies', recipies)
+
+
 
 const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000
 if (process.env.NODE_ENV !== 'test') {
