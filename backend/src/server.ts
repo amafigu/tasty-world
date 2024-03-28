@@ -14,7 +14,7 @@ app.use(
   })
 )
 app.use(express.json())
-app.use('/recipies', recipies)
+app.use('/api/recipies', recipies)
 
 
 
