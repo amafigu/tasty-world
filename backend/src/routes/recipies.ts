@@ -8,8 +8,8 @@ router.get('/', async (req: Request, res: Response) => {
             {
                 id: 1,
                 imagePath: "meat.jpg",
-                title: 'barbecue',
-                subtitle: 'In someplace there is no better option than a barbecue....',
+                title: 'Barbecue',
+                subtitle: 'In a sommer day with friend there are few better options than a barbecue....',
                 category: 'meat',
                 readyIn: '70 minutes',
                 recipeIngredients: 'meat, vegetables ... table ingredients',
@@ -23,6 +23,46 @@ router.get('/', async (req: Request, res: Response) => {
                 readyIn: '50 minutes',
                 recipeIngredients: 'flour, tomato souce ... ingredients',
                 cookingStepts: 'first: make dough, second: prepare the souce'
+            },
+            {
+                id: 3,
+                imagePath: "bowl.jpg",
+                title: 'Asia express bowl',
+                subtitle: 'Healthy tasty and easy to prepare....',
+                category: 'vegeratian',
+                readyIn: '20 minutes',
+                recipeIngredients: 'Eggs, tomato, salad, corn ... ingredients',
+                cookingStepts: 'first: slice the ingredients, second: prepare the peanuts souce'
+            },
+            {
+                id: 4,
+                imagePath: "fish.jpg",
+                title: 'Special fish',
+                subtitle: 'Healthy tasty and easy to prepare....',
+                category: 'fish',
+                readyIn: '40 minutes',
+                recipeIngredients: 'Fish, tomato, salad, corn ... ingredients',
+                cookingStepts: 'first: slice the fish, second: prepare the souce'
+            },
+            {
+                id: 5,
+                imagePath: "meatball.jpg",
+                title: 'Speedy meat ball',
+                subtitle: 'Tasty and easy to prepare....',
+                category: 'meat',
+                readyIn: '40 minutes',
+                recipeIngredients: 'Meat, ruccola, salad ... ingredients',
+                cookingStepts: 'first: slice the ingredients, second: prepare the peanuts souce'
+            },
+            {
+                id: 6,
+                imagePath: "burger.jpg",
+                title: 'Veggie Burger Queen',
+                subtitle: 'Healthy tasty and easy to prepare....',
+                category: 'vegeratian',
+                readyIn: '30 minutes',
+                recipeIngredients: 'Eggs, tomato, salad, corn ... ingredients',
+                cookingStepts: 'first: slice the ingredients, second: prepare the peanuts souce'
             }
 
         ]
