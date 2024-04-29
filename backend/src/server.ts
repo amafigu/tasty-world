@@ -11,7 +11,6 @@ dotenv.config({ path: envFile });
 const app = express();
 app.use(cors());
 
-
 const apolloServer = new ApolloServer({
   typeDefs,
   resolvers
