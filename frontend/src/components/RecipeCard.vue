@@ -1,6 +1,6 @@
 <template>
   <article class="card-body">
-    <img class="image" :src="`/images/${recipe.imagePath}`" />
+    <img class="image" :src="`/images/${recipe.image}`" />
     <h3>{{ recipe.title }}</h3>
     <p>{{ recipe.subtitle }}</p>
     <div class="recipe-details">
@@ -11,8 +11,6 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
-
 const props = defineProps({
   recipe: Object
 })
