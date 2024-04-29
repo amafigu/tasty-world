@@ -17,7 +17,6 @@
     "@apollo/client": "^3.10.1",
     "@egjs/vue3-flicking": "^4.11.2",
     "@vue/apollo-composable": "^4.0.2",
-    "axios": "^1.6.8",
     "cross-fetch": "^4.0.0",
     "graphql": "^16.8.1",
     "graphql-tag": "^2.12.6",
