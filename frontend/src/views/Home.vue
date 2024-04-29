@@ -1,23 +1,23 @@
 <template>
   <main>
-    <Slider :items="recipes"></Slider>
+    <Slider :items="recipes" />
+    <p v-if="loading">Loading recipes...</p>
+    <p v-if="error">An error occurred: {{ error.message }}</p>
   </main>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { computed } from 'vue'
+import { useQuery } from '@vue/apollo-composable'
 import Slider from '@/components/Slider/Slider.vue'
-import { getRecipies } from '@/services/api/getRecipies'
+import { GET_RECIPES } from '@/graphql/queries'
 
-const recipes = ref([])
+const { result, loading, error } = useQuery(GET_RECIPES)
 
-onMounted(async () => {
-  try {
-    const recipesResponse = await getRecipies()
-    recipes.value = recipesResponse.data
-    console.log(recipesResponse)
-  } catch (error) {
-    console.error('Failed to get recipes:', error)
+const recipes = computed(() => {
+  if (result.value && result.value.recipes) {
+    return result.value.recipes
   }
+  return []
 })
 </script>
