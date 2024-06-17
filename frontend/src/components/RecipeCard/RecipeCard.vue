@@ -1,19 +1,21 @@
 <template>
   <article class="card-body">
     <img class="image" :src="`/images/${recipe.image}`" />
-    <h3>{{ recipe.title }}</h3>
-    <p>{{ recipe.subtitle }}</p>
+    <h3>{{ recipe.name }}</h3>
+
     <div class="recipe-details">
-      <span>{{ recipe.category }}</span>
-      <span>{{ recipe.readyIn }}</span>
+      <div>{{ recipe.category }}</div>
+      <div>{{ recipe.time }} minutes</div>
+      <p>{{ recipe.ingredients }}</p>
+      <p>{{ recipe.instructions }}</p>
     </div>
   </article>
 </template>
 
 <script setup>
 const props = defineProps({
-  recipe: Object
-})
+  recipe: Object,
+});
 </script>
 
 <style scoped>

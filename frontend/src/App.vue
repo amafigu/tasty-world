@@ -1,6 +1,7 @@
-<script setup>
-import { RouterView } from 'vue-router'
+<script setup lang="ts">
+import { RouterView } from "vue-router";
 </script>
+
 <template>
   <div>
     <h1>Tasty World, WIP</h1>
