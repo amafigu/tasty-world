@@ -1,14 +1,23 @@
-import { pathsToModuleNameMapper } from 'ts-jest'
-import { compilerOptions } from './tsconfig.json'
+import { defineConfig } from 'vitest/config'
+import vue from '@vitejs/plugin-vue'
+import Icons from 'unplugin-icons/vite'
+import { fileURLToPath, URL } from 'url'
 
-export default {
-  preset: 'ts-jest',
-  testEnvironment: 'jsdom',
-  moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'vue'],
-  transform: {
-    '^.+\\.vue$': '@vue/vue3-jest',
-    '^.+\\.tsx?$': 'ts-jest'
+export default defineConfig({
+  plugins: [
+    vue(),
+    Icons({
+      autoInstall: true, 
+    }),
+  ],
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
   },
-  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths || {}, { prefix: '<rootDir>/' }),
-  setupFilesAfterEnv: ['./test/jest.setup.ts']
-}
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './test/setup.ts',
+  },
+})
