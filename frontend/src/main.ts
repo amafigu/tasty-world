@@ -4,6 +4,7 @@ import router from './router'
 import { DefaultApolloClient } from '@vue/apollo-composable'
 import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client/core'
 import fetch from 'cross-fetch'
+import './assets/global.css'
 
 const httpLink = new HttpLink({
   uri: 'http://localhost:4000/graphql',

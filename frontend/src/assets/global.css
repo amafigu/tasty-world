@@ -1,0 +1,15 @@
+:root {
+    --primary-color: #333;
+    --secondary-color: white;
+    --spacing-small: 1rem;
+    --border-radius-small: 4px;
+  }
+
+  html {
+    overflow-y: scroll;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Josefin Sans', sans-serif;
+  }
