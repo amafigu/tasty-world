@@ -7,12 +7,14 @@ import Home from '@/views/Home/Home.vue'
 import Meat from '@/views/recipes/Meat/Meat.vue'
 import Fish from '@/views/recipes/Fish/Fish.vue'
 import Vegetarian from '@/views/recipes/Vegetarian/Vegetarian.vue'
+import About from '@/views/About/About.vue'
 
 const routes = [
   { path: '/', component: Home },
   { path: '/meat-recipies', component: Meat },
   { path: '/fish-recipies', component: Fish },
   { path: '/vegetarian-recipies', component: Vegetarian },
+  { path: '/about', component: About },
 ]
 
 const router = createRouter({

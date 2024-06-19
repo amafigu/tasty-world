@@ -16,7 +16,8 @@
     "graphql": "^16.8.2",
     "graphql-tag": "^2.12.6",
     "vue": "^3.4.29",
-    "vue-router": "^4.3.3"
+    "vue-router": "^4.3.3",
+    "vue3-carousel": "^0.3.3"
   },
   "devDependencies": {
     "@iconify-json/mdi": "^1.1.66",

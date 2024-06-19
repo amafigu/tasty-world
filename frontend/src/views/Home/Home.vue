@@ -1,8 +1,12 @@
 <template>
-  <main>
-    <Slider :items="recipes" />
-    <p v-if="loading">Loading recipes...</p>
-    <p v-if="error">An error occurred: {{ error.message }}</p>
+  <main class="home-view">
+    <div class="page-container">
+      <section class="slider-container">
+        <Slider :items="recipes" />
+        <p v-if="loading">Loading recipes...</p>
+        <p v-if="error">An error occurred: {{ error.message }}</p>
+      </section>
+    </div>
   </main>
 </template>
 
@@ -22,3 +26,16 @@ const recipes = computed(() => {
   return [];
 });
 </script>
+
+<style scoped>
+.home-view {
+  display: flex;
+  justify-content: center;
+}
+.page-container {
+  width: 80%;
+}
+.slider-container {
+  width: 100%;
+}
+</style>

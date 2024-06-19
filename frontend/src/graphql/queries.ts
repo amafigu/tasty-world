@@ -10,6 +10,7 @@ export const GET_RECIPES = gql`
       time
       ingredients
       instructions
+      title
     }
   }
 `
@@ -24,6 +25,7 @@ export const GET_RECIPE = gql`
       time
       ingredients
       instructions
+      title
     }
   }
 `

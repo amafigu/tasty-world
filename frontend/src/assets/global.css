@@ -1,8 +1,10 @@
 :root {
-    --primary-color: #333;
-    --secondary-color: white;
+    --font-color-primary: #333;
+    --background-color-primary: #fff;
     --spacing-small: 1rem;
     --border-radius-small: 4px;
+    --box-shadow-primary:  rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 4px 2px;
   }
 
   html {
