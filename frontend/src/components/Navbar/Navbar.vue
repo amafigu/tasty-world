@@ -3,7 +3,7 @@
     <div class="container">
       <div class="img-container">
         <RouterLink to="/"
-          ><img src="../../../public/images/logo.png" alt="logo"
+          ><img src="/images/logo.png" alt="logo"
         /></RouterLink>
       </div>
       <div class="link"><RouterLink to="/meat-recipies">Meat</RouterLink></div>
@@ -41,7 +41,7 @@ import Searchbar from "@/components/Searchbar/Searchbar.vue";
 
   a {
     text-decoration: none;
-    color: black;
+    color: var(--font-color-primary);
   }
 }
 
