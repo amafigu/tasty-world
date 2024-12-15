@@ -1,33 +1,38 @@
 <template>
-  <div class="searchbar-container">
+  <div class="searchbar-wrapper">
+    <FontAwesomeIcon icon="fa-solid fa-search" class="search-icon" />
     <input
       type="text"
       placeholder="search for a recipe, with ingredients or name"
+      class="searchbar-input"
     />
-    <icon-mdi-magnify class="search-icon" />
   </div>
 </template>
 
 <script setup>
-import IconMdiMagnify from "~icons/mdi/magnify";
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 </script>
 
 <style scoped>
-.searchbar-container {
-  width: 30%;
-  display: flex;
-  align-items: center;
+.searchbar-wrapper {
+  width: 100%;
+  min-height: 40px;
+  position: relative;
+}
 
-  input {
-    height: 28px;
-    margin-right: 1rem;
-    width: 100%;
-    border-radius: var(--border-radius-small);
-  }
+.searchbar-input {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  padding-left: var(--spacing-regular);
+  border-radius: var(--border-radius-small);
+}
 
-  .search-icon {
-    height: 32px;
-    width: 32px;
-  }
+.search-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
 }
 </style>
