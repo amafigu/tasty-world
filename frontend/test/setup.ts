@@ -7,3 +7,9 @@ vi.mock('vue3-carousel', () => ({
     template: '<div><slot></slot></div>',
   },
 }))
+
+vi.mock('@fortawesome/vue-fontawesome', () => ({
+  FontAwesomeIcon: {
+    template: '<svg></svg>',
+  },
+}))

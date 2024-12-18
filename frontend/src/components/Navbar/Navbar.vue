@@ -1,30 +1,37 @@
 <template>
   <nav class="navbar">
-    <button class="hamburger-menu" @click="isOpen = !isOpen">
+    <button
+      class="hamburger-menu"
+      @click="isOpen = !isOpen"
+      aria-label="Open Menu"
+    >
       <FontAwesomeIcon icon="fa-solid fa-bars" />
     </button>
     <transition name="slide">
       <div v-if="isOpen" class="mobile-menu-container">
-        <MobileMenu @close="isOpen = false"></MobileMenu></div
-    ></transition>
+        <MobileMenu @close="isOpen = false"></MobileMenu>
+      </div>
+    </transition>
 
     <div class="links-container">
       <div class="link">
-        <RouterLink to="/meat-recipies">Meat</RouterLink>
+        <RouterLink :to="MEAT_RECIPES">Meat</RouterLink>
       </div>
       <div class="link">
-        <RouterLink to="/fish-recipies">Fish</RouterLink>
+        <RouterLink :to="FISH_RECIPES">Fish</RouterLink>
       </div>
       <div class="link">
-        <RouterLink to="/vegetarian-recipies">Vegetarian</RouterLink>
+        <RouterLink :to="VEGETARIAN_RECIPES">Vegetarian</RouterLink>
       </div>
-      <div class="link"><RouterLink to="/about">About</RouterLink></div>
+      <div class="link"><RouterLink :to="ABOUT">About</RouterLink></div>
     </div>
     <div class="logo-container">
-      <RouterLink to="/"><img src="/images/logo.png" alt="logo" /></RouterLink>
+      <RouterLink :to="HOME"
+        ><img src="/images/logo.png" alt="logo"
+      /></RouterLink>
     </div>
     <div class="icon-container">
-      <font-awesome-icon icon="fa-solid fa-user" />
+      <FontAwesomeIcon icon="fa-solid fa-user" />
     </div>
     <div class="searchbar-container">
       <Searchbar></Searchbar>
@@ -32,13 +39,20 @@
   </nav>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import Searchbar from '@/components/Searchbar/Searchbar.vue'
 import MobileMenu from '../MobileMenu/MobileMenu.vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { ref } from 'vue'
+import {
+  ABOUT,
+  FISH_RECIPES,
+  HOME,
+  MEAT_RECIPES,
+  VEGETARIAN_RECIPES,
+} from '@/constants/routes'
+import { Ref, ref } from 'vue'
 
-const isOpen = ref(false)
+const isOpen: Ref<boolean> = ref(false)
 </script>
 
 <style scoped>
@@ -80,6 +94,11 @@ const isOpen = ref(false)
   display: block;
   grid-area: menu;
   align-self: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: var(--font-color-primary);
 }
 
 .searchbar-container {
@@ -88,27 +107,31 @@ const isOpen = ref(false)
   display: flex;
 }
 
-@keyframes slide-in {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(0);
-  }
+.slide-enter-active,
+.slide-leave-active {
+  transition: transform 0.5s ease;
+}
+.slide-enter-from,
+.slide-leave-to {
+  transform: translateX(-100%);
+}
+.slide-enter-to,
+.slide-leave-from {
+  transform: translateX(0);
 }
 
 .mobile-menu-container {
   display: block;
   position: fixed;
   width: 80%;
+  height: 100%;
   top: 0;
   left: 0;
   z-index: var(--z-index-mobile-menu);
   box-shadow: var(--box-shadow-primary);
-  animation: slide-in 0.5s ease-out forwards;
+  background-color: var(--background-color-primary);
 }
 
-/* desktop */
 @media only screen and (min-width: 978px) {
   .navbar {
     grid-template-rows: 3fr 2fr;
@@ -124,6 +147,7 @@ const isOpen = ref(false)
     grid-auto-flow: column;
     align-self: center;
     align-items: center;
+    gap: var(--spacing-small);
   }
 
   .link a {
@@ -168,5 +192,18 @@ const isOpen = ref(false)
   .mobile-menu-container {
     display: none;
   }
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+.slide-enter-from,
+.slide-leave-to {
+  transform: translateX(-100%);
+}
+.slide-enter-to,
+.slide-leave-from {
+  transform: translateX(0);
 }
 </style>
