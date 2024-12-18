@@ -1,20 +1,18 @@
 import { fireEvent } from '@testing-library/vue'
 import { describe, it, expect, beforeEach } from 'vitest'
 import '@testing-library/jest-dom'
-import Navbar from '@/components/Navbar/Navbar.vue'
+import MobileMenu from '@/components/MobileMenu/MobileMenu.vue'
 import { renderUsingRouter } from '../../helpers/routing'
 
-describe('Navbar', () => {
+describe('MobileMenu', () => {
   let matchers: ReturnType<typeof renderUsingRouter>
   beforeEach(() => {
-    // Ensure a fresh render before each test.
-    matchers = renderUsingRouter(Navbar)
+    matchers = renderUsingRouter(MobileMenu)
   })
 
-  it('renders all links correctly', async () => {
-    const { getByText, getByAltText } = matchers
+  it('renders all navigation links correctly', () => {
+    const { getByText } = matchers
 
-    expect(getByAltText('logo')).toBeInTheDocument()
     expect(getByText('Meat')).toBeInTheDocument()
     expect(getByText('Fish')).toBeInTheDocument()
     expect(getByText('Vegetarian')).toBeInTheDocument()
@@ -42,17 +40,14 @@ describe('Navbar', () => {
     expect(await findByText('Vegetarian')).toBeInTheDocument()
   })
 
-  it('closes mobile menu when close button is clicked', async () => {
-    const { getByLabelText, queryByRole } = matchers
+  it('emits "@close" event when close button is clicked', async () => {
+    const { getByLabelText, emitted } = matchers
+    const closeButton = getByLabelText('Close Menu')
 
-    const openMenuBtn = getByLabelText('Open Menu')
-    await fireEvent.click(openMenuBtn)
+    await fireEvent.click(closeButton)
 
-    expect(queryByRole('mobile-menu')).toBeInTheDocument()
-
-    const closeMenuBtn = getByLabelText('Close Menu')
-    await fireEvent.click(closeMenuBtn)
-
-    expect(queryByRole('mobile-menu')).not.toBeInTheDocument()
+    expect(emitted()).toHaveProperty('close')
+    // expect that it was triggered once
+    expect(emitted().close.length).toBe(1)
   })
 })
