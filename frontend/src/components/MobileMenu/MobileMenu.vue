@@ -1,28 +1,40 @@
 <template>
-  <div class="mobile-menu">
+  <nav class="mobile-menu" role="mobile-menu">
     <div class="close-button-container">
-      <button @click="$emit('close')" class="close-button">
+      <button
+        @click="$emit('close')"
+        class="close-button"
+        aria-label="Close Menu"
+      >
         <FontAwesomeIcon icon="fa-solid fa-times" />
       </button>
     </div>
-
     <div class="links-container">
+      <div class="separator" role="separator"></div>
       <div class="link">
-        <RouterLink to="/meat-recipies">Meat</RouterLink>
+        <RouterLink :to="MEAT_RECIPES">Meat</RouterLink>
       </div>
       <div class="link">
-        <RouterLink to="/fish-recipies">Fish</RouterLink>
+        <RouterLink :to="FISH_RECIPES">Fish</RouterLink>
       </div>
       <div class="link">
-        <RouterLink to="/vegetarian-recipies">Vegetarian</RouterLink>
+        <RouterLink :to="VEGETARIAN_RECIPES">Vegetarian</RouterLink>
       </div>
-      <div class="link"><RouterLink to="/about">About</RouterLink></div>
+      <div class="link"><RouterLink :to="ABOUT">About</RouterLink></div>
     </div>
-  </div>
+  </nav>
 </template>
 
 <script setup>
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { RouterLink } from 'vue-router'
+import {
+  ABOUT,
+  FISH_RECIPES,
+  HOME,
+  MEAT_RECIPES,
+  VEGETARIAN_RECIPES,
+} from '@/constants/routes'
 </script>
 
 <style scoped>
@@ -33,18 +45,46 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
   display: flex;
   flex-direction: column;
   border-bottom-right-radius: var(--border-radius-small);
-  padding: 2rem 1rem;
+  padding: var(--spacing-small) var(--spacing-small) var(--spacing-regular)
+    var(--spacing-small);
   background-color: var(--background-color-primary);
   overflow-y: auto;
 }
 
+.close-button-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-bottom: 0.8rem;
+}
+
 .close-button {
-  align-self: flex-end;
+  cursor: pointer;
   background: none;
   border: none;
   font-size: 1.5rem;
-  cursor: pointer;
   color: var(--font-color-primary);
+}
+
+.separator {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.separator::before,
+.separator::after {
+  content: '';
+  flex: 1;
+  border-top: 1px solid rgb(227, 227, 227);
+}
+
+.separator::before {
+  margin-left: 0.5rem;
+}
+
+.separator::after {
+  margin-right: 0.5rem;
 }
 
 .links-container {
@@ -56,10 +96,11 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 .link {
   min-height: 40px;
   display: flex;
-  align-items: stretch;
+  align-items: center;
   width: 100%;
   border-radius: var(--border-radius-small);
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .link:hover {
@@ -71,8 +112,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
   color: var(--font-color-primary);
   font-size: 1.25rem;
   font-weight: 500;
-  transition: color 0.3s ease;
-  transition: text-decoration-color;
+  transition: color 0.3s ease, text-decoration-color 0.3s ease;
   text-decoration: underline 1px solid rgb(0, 0, 0);
   text-underline-offset: 0.15em;
 }
@@ -81,15 +121,9 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
   color: var(--font-color-secondary);
 }
 
-.close-button-container {
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-}
-
-.close-button {
-  cursor: pointer;
-  background: none;
-  border: none;
+@media (min-width: 978px) {
+  .mobile-menu {
+    display: none;
+  }
 }
 </style>
