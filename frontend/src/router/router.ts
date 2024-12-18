@@ -1,31 +1,37 @@
 import type { RouteRecordRaw } from 'vue-router'
-
+import {
+  HOME,
+  ABOUT,
+  MEAT_RECIPES,
+  FISH_RECIPES,
+  VEGETARIAN_RECIPES,
+} from '@/constants/routes'
 const routes: RouteRecordRaw[] = [
   {
-    path: '/',
+    path: HOME,
     name: 'home',
-    component: () => import('../views/Home/Home.vue')
+    component: () => import('../views/Home/Home.vue'),
   },
   {
-    path: '/about',
+    path: ABOUT,
     name: 'about',
-    component: () => import('../views/About/About.vue')
+    component: () => import('../views/About/About.vue'),
   },
   {
-    path: '/meat-recipies',
+    path: MEAT_RECIPES,
     name: 'meat',
-    component: () => import('../views/recipes/Meat/Meat.vue')
+    component: () => import('../views/recipes/Meat/Meat.vue'),
   },
   {
-    path: '/fish-recipies',
+    path: FISH_RECIPES,
     name: 'fish',
-    component: () => import('../views/recipes/Fish/Fish.vue')
+    component: () => import('../views/recipes/Fish/Fish.vue'),
   },
   {
-    path: '/vegetarian-recipies',
+    path: VEGETARIAN_RECIPES,
     name: 'vegetarian',
-    component: () => import('../views/recipes/Vegetarian/Vegetarian.vue')
-  }
+    component: () => import('../views/recipes/Vegetarian/Vegetarian.vue'),
+  },
 ]
 
 export default routes
