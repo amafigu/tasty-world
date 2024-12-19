@@ -6,7 +6,10 @@ export const GET_RECIPES = gql`
       id
       name
       image
-      category
+      categories {
+        id
+        name
+      }
       time
       ingredients
       instructions
@@ -21,11 +24,23 @@ export const GET_RECIPE = gql`
       id
       name
       image
-      category
+      categories {
+        id
+        name
+      }
       time
       ingredients
       instructions
       title
+    }
+  }
+`
+
+export const GET_RECIPE_CATEGORIES = gql`
+  query GetRecipeCategories {
+    recipeCategories {
+      id
+      name
     }
   }
 `
