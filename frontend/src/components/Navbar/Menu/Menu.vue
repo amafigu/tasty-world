@@ -33,7 +33,7 @@
 <script setup lang="ts">
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { RouterLink } from 'vue-router'
-import { ABOUT, HOME, RECIPES } from '@/constants/routes'
+import { ABOUT, RECIPES } from '@/constants/routes'
 import { useQuery } from '@vue/apollo-composable'
 import { GET_RECIPE_CATEGORIES } from '@/graphql/queries'
 import { computed } from 'vue'
