@@ -1,5 +1,5 @@
 <template>
-  <article class="slider-card">
+  <article class="recipe-card">
     <img class="image" :src="`/images/${recipe.image}`" />
     <h3>{{ recipe.name }}</h3>
     <div class="details">
@@ -11,11 +11,11 @@
 <script setup>
 const props = defineProps({
   recipe: Object,
-});
+})
 </script>
 
 <style scoped>
-.slider-card {
+.recipe-card {
   width: 300px;
   height: 420px;
   box-shadow: var(--box-shadow-primary);
@@ -23,7 +23,7 @@ const props = defineProps({
 }
 
 @media (min-width: 600px) {
-  .slider-card {
+  .recipe-card {
     width: 320px;
     height: 460px;
   }

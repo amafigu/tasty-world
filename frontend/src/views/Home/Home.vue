@@ -10,21 +10,17 @@
   </main>
 </template>
 
-<script setup>
-import { computed } from "vue";
-import { useQuery } from "@vue/apollo-composable";
-import Slider from "@/components/Slider/Slider.vue";
-import { GET_RECIPES } from "@/graphql/queries";
+<script setup lang="ts">
+import { computed } from 'vue'
+import { useQuery } from '@vue/apollo-composable'
+import Slider from '@/components/Slider/Slider.vue'
+import { GET_RECIPES } from '@/graphql/queries'
+import { Recipe } from '@/types/types'
+const { result, loading, error } = useQuery(GET_RECIPES)
 
-const { result, loading, error } = useQuery(GET_RECIPES);
-
-const recipes = computed(() => {
-  if (result.value && result.value.recipes) {
-    console.log(result.value.recipes);
-    return result.value.recipes;
-  }
-  return [];
-});
+const recipes = computed<Recipe[]>(() => {
+  return result.value?.recipes ?? []
+})
 </script>
 
 <style scoped>

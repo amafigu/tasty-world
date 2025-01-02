@@ -1,5 +1,5 @@
 <template>
-  <nav class="mobile-menu" role="mobile-menu">
+  <nav class="menu" role="menu" aria-label="menu">
     <div class="close-button-container">
       <button
         @click="$emit('close')"
@@ -11,34 +11,41 @@
     </div>
     <div class="links-container">
       <div class="separator" role="separator"></div>
+      <div v-if="loading">Loading Links</div>
+      <div v-else-if="error">Error: {{ error }}</div>
+      <template v-else>
+        <div class="link" v-for="category in categories" :key="category.id">
+          <RouterLink
+            @click="$emit('close')"
+            :to="`${RECIPES}/${category.name}`"
+          >
+            {{ category.name.toUpperCase() }}
+          </RouterLink>
+        </div>
+      </template>
       <div class="link">
-        <RouterLink :to="MEAT_RECIPES">Meat</RouterLink>
+        <RouterLink @click="$emit('close')" :to="ABOUT">ABOUT</RouterLink>
       </div>
-      <div class="link">
-        <RouterLink :to="FISH_RECIPES">Fish</RouterLink>
-      </div>
-      <div class="link">
-        <RouterLink :to="VEGETARIAN_RECIPES">Vegetarian</RouterLink>
-      </div>
-      <div class="link"><RouterLink :to="ABOUT">About</RouterLink></div>
     </div>
   </nav>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { RouterLink } from 'vue-router'
-import {
-  ABOUT,
-  FISH_RECIPES,
-  HOME,
-  MEAT_RECIPES,
-  VEGETARIAN_RECIPES,
-} from '@/constants/routes'
+import { ABOUT, RECIPES } from '@/constants/routes'
+import { useQuery } from '@vue/apollo-composable'
+import { GET_RECIPE_CATEGORIES } from '@/graphql/queries'
+import { computed } from 'vue'
+
+const { result, loading, error } = useQuery(GET_RECIPE_CATEGORIES)
+const categories = computed(() => {
+  return result.value?.recipeCategories ?? []
+})
 </script>
 
 <style scoped>
-.mobile-menu {
+.menu {
   width: 100%;
   height: 100%;
   box-sizing: border-box;
@@ -119,11 +126,5 @@ import {
 
 .link a:hover {
   color: var(--font-color-secondary);
-}
-
-@media (min-width: 978px) {
-  .mobile-menu {
-    display: none;
-  }
 }
 </style>
