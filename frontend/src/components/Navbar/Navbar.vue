@@ -8,22 +8,19 @@
       <FontAwesomeIcon icon="fa-solid fa-bars" />
     </button>
     <transition name="slide">
-      <div v-if="isOpen" class="mobile-menu-container">
-        <MobileMenu @close="isOpen = false"></MobileMenu>
+      <div v-if="isOpen" class="menu-container">
+        <Menu @close="isOpen = false"></Menu>
       </div>
     </transition>
-
     <div class="links-container">
-      <div class="link">
-        <RouterLink :to="MEAT_RECIPES">Meat</RouterLink>
-      </div>
-      <div class="link">
-        <RouterLink :to="FISH_RECIPES">Fish</RouterLink>
-      </div>
-      <div class="link">
-        <RouterLink :to="VEGETARIAN_RECIPES">Vegetarian</RouterLink>
-      </div>
-      <div class="link"><RouterLink :to="ABOUT">About</RouterLink></div>
+      <button
+        class="link-header"
+        @click="isOpen = !isOpen"
+        aria-label="Open Recipes"
+      >
+        Recipes
+      </button>
+      <div class="link-header"><RouterLink :to="ABOUT">About</RouterLink></div>
     </div>
     <div class="logo-container">
       <RouterLink :to="HOME"
@@ -41,16 +38,10 @@
 
 <script setup lang="ts">
 import Searchbar from '@/components/Searchbar/Searchbar.vue'
-import MobileMenu from '../MobileMenu/MobileMenu.vue'
+import { ABOUT, HOME } from '@/constants/routes'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import {
-  ABOUT,
-  FISH_RECIPES,
-  HOME,
-  MEAT_RECIPES,
-  VEGETARIAN_RECIPES,
-} from '@/constants/routes'
 import { Ref, ref } from 'vue'
+import Menu from './Menu/Menu.vue'
 
 const isOpen: Ref<boolean> = ref(false)
 </script>
@@ -75,6 +66,50 @@ const isOpen: Ref<boolean> = ref(false)
 
 .links-container {
   display: none;
+}
+
+.link-header,
+.link-header a,
+.link-header {
+  width: fit-content;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-color-primary);
+  color: var(--font-color-primary);
+}
+
+.link {
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-radius: var(--border-radius-small);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: var(--font-size-regular);
+  font-weight: var(--font-weight-regular);
+}
+
+.link:hover,
+.link-recipes:hover {
+  background-color: var(--background-color-secondary);
+}
+
+.link a {
+  text-decoration: none;
+  color: var(--font-color-primary);
+  font-size: 1.25rem;
+  font-weight: 500;
+  transition: color 0.3s ease, text-decoration-color 0.3s ease;
+  text-decoration: underline 1px solid rgb(0, 0, 0);
+  text-underline-offset: 0.15em;
+}
+
+.link a:hover {
+  color: var(--font-color-secondary);
 }
 
 .logo-container {
@@ -120,7 +155,7 @@ const isOpen: Ref<boolean> = ref(false)
   transform: translateX(0);
 }
 
-.mobile-menu-container {
+.menu-container {
   display: block;
   position: fixed;
   width: 80%;
@@ -188,16 +223,13 @@ const isOpen: Ref<boolean> = ref(false)
   .hamburger-menu {
     display: none;
   }
-
-  .mobile-menu-container {
-    display: none;
-  }
 }
 
 .slide-enter-active,
 .slide-leave-active {
   transition: transform 0.5s ease, opacity 0.5s ease;
 }
+
 .slide-enter-from,
 .slide-leave-to {
   transform: translateX(-100%);
