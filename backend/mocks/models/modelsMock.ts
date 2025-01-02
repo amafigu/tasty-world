@@ -1,5 +1,5 @@
-import { recipeCategoriesMock } from './recipeCategoriesMock'
-import { recipesMock } from './recipesMock'
+import { recipeCategoriesMock } from '../data/recipeCategoriesMock'
+import { recipesMock } from '../data/recipesMock'
 
 const recipesFindAllMock = jest.fn().mockResolvedValue(recipesMock)
 const recipeCategoriesFindAllMock = jest
@@ -23,19 +23,3 @@ export const recipeCategoriesModelMock = {
     close: jest.fn(),
   },
 }
-
-// Maybe a general use case like
-
-/*
-export const recipeModelMock = {
-  recipes: {
-    findAll: recipeFindAllMock,
-  },
-  recipeCategories: {
-    findAll: jest.fn().mockResolvedValue([]),
-  },
-  sequelize: {
-    close: jest.fn(),
-  },
-}
-*/
