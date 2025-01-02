@@ -118,6 +118,119 @@ const recipes = [
     ingredients: 'Cream cheese, sugar, eggs, graham crackers ...',
     instructions: 'Prepare crust, whip filling, bake in a water bath',
   },
+  {
+    image: 'lasagna.png',
+    name: 'Lasagna Bolognese',
+    title: 'Classic Italian lasagna with a rich meat sauce.',
+    categories: [
+      { id: 1, name: 'meat' },
+      { id: 7, name: 'italian' },
+    ],
+    time: 60,
+    ingredients:
+      'Pasta sheets, ground beef, tomato sauce, cheese, onions, garlic...',
+    instructions:
+      'Sauté onions and ground beef, add tomato sauce. Layer pasta, sauce, cheese. Bake until golden.',
+  },
+  {
+    image: 'caprese.png',
+    name: 'Caprese Salad',
+    title: 'Fresh and light Italian starter.',
+    categories: [
+      { id: 4, name: 'vegetarian' },
+      { id: 7, name: 'italian' },
+    ],
+    time: 15,
+    ingredients: 'Tomatoes, mozzarella, basil, olive oil...',
+    instructions:
+      'Slice tomatoes and mozzarella, layer with basil leaves, drizzle with olive oil and salt.',
+  },
+  {
+    image: 'fish-tacos.png',
+    name: 'Fish Tacos',
+    title: 'Zesty and flavorful street-style tacos.',
+    categories: [{ id: 2, name: 'fish' }],
+    time: 25,
+    ingredients: 'White fish fillets, tortillas, cabbage, lime, sauce...',
+    instructions:
+      'Season fish and pan-fry. Assemble in tortillas with shredded cabbage, sauce, and lime juice.',
+  },
+  {
+    image: 'chicken-alfredo.png',
+    name: 'Chicken Alfredo',
+    title: 'Creamy pasta favorite.',
+    categories: [
+      { id: 3, name: 'poultry' },
+      { id: 7, name: 'italian' },
+    ],
+    time: 30,
+    ingredients: 'Chicken breast, fettuccine, cream, parmesan, butter...',
+    instructions:
+      'Cook pasta, sauté chicken, add cream and cheese to create sauce, combine and serve.',
+  },
+  {
+    image: 'turkey-pot-pie.png',
+    name: 'Turkey Pot Pie',
+    title: 'Hearty comfort food in a flaky crust.',
+    categories: [{ id: 3, name: 'poultry' }],
+    time: 50,
+    ingredients: 'Turkey, mixed vegetables, gravy, pie crust...',
+    instructions:
+      'Cook turkey and vegetables, fill pie crust with mixture, bake until crust is golden.',
+  },
+  {
+    image: 'vegan-chili.png',
+    name: 'Vegan Chili',
+    title: 'A protein-packed, plant-based stew.',
+    categories: [{ id: 5, name: 'vegan' }],
+    time: 40,
+    ingredients: 'Beans, tomatoes, peppers, onions, spices...',
+    instructions:
+      'Sauté onions and peppers, add tomatoes, beans, and spices, simmer until flavors merge.',
+  },
+  {
+    image: 'lava-cake.png',
+    name: 'Chocolate Lava Cake',
+    title: 'Warm, gooey chocolate center.',
+    categories: [{ id: 6, name: 'dessert' }],
+    time: 25,
+    ingredients: 'Chocolate, butter, eggs, sugar, flour...',
+    instructions:
+      'Melt chocolate and butter, combine with beaten eggs and sugar, bake briefly for molten center.',
+  },
+  {
+    image: 'tiramisu.png',
+    name: 'Tiramisu',
+    title: 'An Italian classic with coffee and mascarpone.',
+    categories: [
+      { id: 6, name: 'dessert' },
+      { id: 7, name: 'italian' },
+    ],
+    time: 45,
+    ingredients: 'Mascarpone, coffee, ladyfingers, cocoa, sugar...',
+    instructions:
+      'Dip ladyfingers in coffee, layer with mascarpone mixture, dust with cocoa, chill before serving.',
+  },
+  {
+    image: 'pad-thai.png',
+    name: 'Pad Thai',
+    title: 'A Thai stir-fried noodle staple.',
+    categories: [{ id: 8, name: 'asian' }],
+    time: 30,
+    ingredients: 'Rice noodles, eggs, bean sprouts, tamarind sauce, peanuts...',
+    instructions:
+      'Soak noodles, stir-fry with sauce and ingredients, garnish with crushed peanuts and lime.',
+  },
+  {
+    image: 'sushi-rolls.png',
+    name: 'Sushi Rolls',
+    title: 'Fresh and customizable Japanese favorite.',
+    categories: [{ id: 8, name: 'asian' }],
+    time: 40,
+    ingredients: 'Sushi rice, nori, fillings (fish or veggies), soy sauce...',
+    instructions:
+      'Prepare sushi rice, place on nori, add fillings, roll tightly, slice into pieces.',
+  },
 ]
 
 async function seed() {
