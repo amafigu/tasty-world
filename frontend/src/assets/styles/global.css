@@ -1,6 +1,7 @@
 :root {
   --font-color-primary: #333;
   --font-color-secondary: #494848;
+  --font-size-huge: 3rem;
   --font-size-regular: 1.25rem;
   --font-weight-regular: 500;
   --background-color-primary: #fff;
