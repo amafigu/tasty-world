@@ -11,16 +11,25 @@ export const GET_RECIPES = gql`
         name
       }
       time
-      ingredients
-      instructions
+      peopleToServe
+      difficultyLevel
+      ingredients {
+        subcategory
+        quantity
+        name
+      }
+      instructions {
+        step
+        description
+      }
       title
     }
   }
 `
 
 export const GET_RECIPE = gql`
-  query GetRecipe($id: ID!) {
-    recipe(id: $id) {
+  query GetRecipe($name: String!) {
+    recipe(name: $name) {
       id
       name
       image
@@ -29,8 +38,17 @@ export const GET_RECIPE = gql`
         name
       }
       time
-      ingredients
-      instructions
+      peopleToServe
+      difficultyLevel
+      ingredients {
+        subcategory
+        quantity
+        name
+      }
+      instructions {
+        step
+        description
+      }
       title
     }
   }
