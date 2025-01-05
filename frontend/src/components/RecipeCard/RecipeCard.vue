@@ -1,17 +1,25 @@
 <template>
-  <article class="recipe-card">
-    <img class="image" :src="`/images/${recipe.image}`" />
-    <h3>{{ recipe.name }}</h3>
-    <div class="details">
-      <h4>{{ recipe.title }}</h4>
-    </div>
-  </article>
+  <RouterLink :to="`${RECIPES}/${recipe.categories[0].name}/${recipe.name}`">
+    <article class="recipe-card">
+      <img class="image" :src="`/images/${recipe.image}`" />
+      <h3>{{ recipe.name }}</h3>
+      <div class="details">
+        <h4>{{ recipe.title }}</h4>
+      </div>
+    </article>
+  </RouterLink>
 </template>
 
-<script setup>
-const props = defineProps({
-  recipe: Object,
-})
+<script setup lang="ts">
+import { RouterLink } from 'vue-router'
+import { RECIPES } from '@/constants/routes'
+import type { Recipe } from '@/types'
+
+interface RecipeCardProps {
+  recipe: Recipe
+}
+
+const props = defineProps<RecipeCardProps>()
 </script>
 
 <style scoped>

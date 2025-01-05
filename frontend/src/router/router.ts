@@ -1,5 +1,5 @@
+import { ABOUT, HOME, RECIPES } from '@/constants/routes'
 import type { RouteRecordRaw } from 'vue-router'
-import { HOME, ABOUT, RECIPES } from '@/constants/routes'
 const routes: RouteRecordRaw[] = [
   {
     path: HOME,
@@ -15,6 +15,11 @@ const routes: RouteRecordRaw[] = [
     path: `${RECIPES}/:category`,
     name: 'recipes',
     component: () => import('../views/Recipes/Recipes.vue'),
+  },
+  {
+    path: `${RECIPES}/:category/:recipe`,
+    name: 'recipe details',
+    component: () => import('../views/RecipeDetails/RecipeDetails.vue'),
   },
 ]
 
