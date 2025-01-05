@@ -1,5 +1,5 @@
-import dotenv from 'dotenv'
-import db from '../models/index'
+import dotenv from 'dotenv';
+import db from '../models/index';
 
 const envFile =
   process.env.NODE_ENV === 'production' ? '.env.production' : '.env.development'
@@ -9,114 +9,193 @@ dotenv.config({ path: envFile })
 const recipes = [
   {
     image: 'meat.png',
-    name: 'Barbecue with meat & veggies',
-    title: 'For a sommer day with friends.',
+    name: 'Barbecue with Meat & Veggies',
+    title: 'For a summer day with friends.',
     categories: [{ id: 1, name: 'meat' }],
     time: 30,
-    ingredients: 'meat, vegetables ... table ingredients',
-    instructions: 'first: make fire, second: prepare the meat and the salad',
+    peopleToServe: 4, 
+    difficultyLevel: 2, 
+    ingredients: [
+      { subcategory: 'Meat', quantity: '400g', name: 'Beef' },
+      { subcategory: 'Vegetables', quantity: '300g', name: 'Mixed Vegetables' },
+      
+    ],
+    instructions: [
+      { step: 1, description: 'Make fire.' },
+      { step: 2, description: 'Prepare the meat and the salad.' },
+    ],
   },
   {
     image: 'pizza.png',
-    name: 'Pizza bianca from toscana',
-    title: 'Tradicional italian recipe',
+    name: 'Pizza Bianca from Toscana',
+    title: 'Traditional Italian recipe.',
     categories: [
       { id: 4, name: 'vegetarian' },
       { id: 7, name: 'italian' },
     ],
     time: 60,
-    ingredients: 'flour, tomato souce ... ingredients',
-    instructions: 'first: make dough, second: prepare the souce',
+    peopleToServe: 2, 
+    difficultyLevel: 2, 
+    ingredients: [
+      { subcategory: 'Dough', quantity: '200g', name: 'Flour' },
+      { subcategory: 'Sauce', quantity: '100ml', name: 'Tomato Sauce' },
+      { subcategory: 'Cheese', quantity: '150g', name: 'Mozzarella Cheese' },
+    ],
+    instructions: [
+      { step: 1, description: 'Prepare the dough.' },
+      { step: 2, description: 'Spread the tomato sauce over the dough.' },
+      { step: 3, description: 'Add mozzarella cheese as topping.' },
+      { step: 4, description: 'Bake in the oven at 220°C for 15 minutes.' },
+    ],
   },
   {
     image: 'bowl.png',
-    name: 'Asia express bowl',
-    title: 'Healthy tasty and easy to prepare',
+    name: 'Asia Express Bowl',
+    title: 'Healthy, tasty, and easy to prepare.',
     categories: [
       { id: 4, name: 'vegetarian' },
       { id: 8, name: 'asian' },
     ],
     time: 30,
-    ingredients: 'Eggs, tomato, salad, corn ... ingredients',
-    instructions:
-      'first: slice the ingredients, second: prepare the peanuts souce',
+    peopleToServe: 3, 
+    difficultyLevel: 1, 
+    ingredients: [
+      { subcategory: 'Protein', quantity: '2', name: 'Eggs' },
+      { subcategory: 'Vegetables', quantity: '100g', name: 'Tomato' },
+      { subcategory: 'Greens', quantity: '50g', name: 'Salad' },
+      { subcategory: 'Grains', quantity: '100g', name: 'Corn' },
+    ],
+    instructions: [
+      { step: 1, description: 'Slice the ingredients.' },
+      { step: 2, description: 'Prepare the peanut sauce.' },
+      { step: 3, description: 'Combine all ingredients in a bowl and drizzle with sauce.' },
+    ],
   },
   {
     image: 'fish.png',
-    name: 'Special spyci salmon',
-    title: 'Fresh, good looking and delicious',
+    name: 'Special Spicy Salmon',
+    title: 'Fresh, good-looking, and delicious.',
     categories: [{ id: 2, name: 'fish' }],
     time: 40,
-    ingredients: 'Fish, tomato, salad, corn ... ingredients',
-    instructions: 'first: slice the fish, second: prepare the souce',
+    peopleToServe: 2, 
+    difficultyLevel: 2, 
+    ingredients: [
+      { subcategory: 'Fish', quantity: '300g', name: 'Salmon' },
+      { subcategory: 'Vegetables', quantity: '100g', name: 'Tomato' },
+      { subcategory: 'Greens', quantity: '50g', name: 'Salad' },
+      { subcategory: 'Grains', quantity: '100g', name: 'Corn' },
+    ],
+    instructions: [
+      { step: 1, description: 'Slice the salmon.' },
+      { step: 2, description: 'Prepare the spicy sauce.' },
+      { step: 3, description: 'Grill the salmon and serve with salad.' },
+    ],
   },
   {
     image: 'meatball.png',
-    name: 'Grandma meat balls',
-    title: 'Impress your friend with this tradicional plate',
+    name: 'Grandma\'s Meatballs',
+    title: 'Impress your friends with this traditional plate.',
     categories: [{ id: 1, name: 'meat' }],
     time: 20,
-    ingredients: 'Meat, ruccola, salad ... ingredients',
-    instructions:
-      'first: slice the ingredients, second: prepare the peanuts souce',
+    peopleToServe: 4, 
+    difficultyLevel: 1, 
+    ingredients: [
+      { subcategory: 'Meat', quantity: '500g', name: 'Ground Beef' },
+      { subcategory: 'Greens', quantity: '50g', name: 'Ruccola' },
+      { subcategory: 'Vegetables', quantity: '100g', name: 'Salad' },
+    ],
+    instructions: [
+      { step: 1, description: 'Slice the ingredients.' },
+      { step: 2, description: 'Prepare the peanut sauce.' },
+      { step: 3, description: 'Mix the meat and form into balls, then cook.' },
+    ],
   },
   {
     image: 'burger.png',
     name: 'Vegan Burger Queen',
-    title: 'Make your vegan frieds happy.',
+    title: 'Make your vegan friends happy.',
     categories: [{ id: 5, name: 'vegan' }],
     time: 30,
-    ingredients: 'Tomato, salad, corn ... ingredients',
-    instructions:
-      'first: slice the ingredients, second: prepare the peanuts souce',
-  },
-  {
-    image: 'meat.png',
-    name: 'Barbecue with meat & veggies',
-    title: 'For a summer day with friends.',
-    categories: [{ id: 1, name: 'meat' }],
-    time: 30,
-    ingredients: 'meat, vegetables ... table ingredients',
-    instructions: 'first: make fire, second: prepare the meat and the salad',
-  },
-  {
-    image: 'fish.png',
-    name: 'Special spicy salmon',
-    title: 'Fresh, good looking and delicious',
-    categories: [{ id: 2, name: 'fish' }],
-    time: 40,
-    ingredients: 'Fish, tomato, salad, corn ... ingredients',
-    instructions: 'first: slice the fish, second: prepare the souce',
+    peopleToServe: 2, 
+    difficultyLevel: 1, 
+    ingredients: [
+      { subcategory: 'Buns', quantity: '2', name: 'Burger Buns' },
+      { subcategory: 'Vegetables', quantity: '50g', name: 'Tomato' },
+      { subcategory: 'Greens', quantity: '50g', name: 'Salad' },
+      { subcategory: 'Grains', quantity: '100g', name: 'Corn' },
+    ],
+    instructions: [
+      { step: 1, description: 'Slice the ingredients.' },
+      { step: 2, description: 'Prepare the peanut sauce.' },
+      { step: 3, description: 'Assemble the vegan burgers with buns and fillings.' },
+    ],
   },
   {
     image: 'chicken.png',
-    name: 'Lemon garlic chicken',
-    title: 'Zesty and flavorful',
+    name: 'Lemon Garlic Chicken',
+    title: 'Zesty and flavorful.',
     categories: [{ id: 3, name: 'poultry' }],
     time: 35,
-    ingredients: 'Chicken, lemon, garlic, herbs ...',
-    instructions: 'Marinate the chicken, then grill or bake to perfection',
+    peopleToServe: 3, 
+    difficultyLevel: 1, 
+    ingredients: [
+      { subcategory: 'Protein', quantity: '500g', name: 'Chicken' },
+      { subcategory: 'Flavorings', quantity: '50g', name: 'Lemon' },
+      { subcategory: 'Flavorings', quantity: '20g', name: 'Garlic' },
+      { subcategory: 'Herbs', quantity: '10g', name: 'Mixed Herbs' },
+    ],
+    instructions: [
+      { step: 1, description: 'Marinate the chicken with lemon and garlic.' },
+      { step: 2, description: 'Grill or bake the chicken to perfection.' },
+      { step: 3, description: 'Serve with your choice of sides.' },
+    ],
   },
   {
     image: 'salad.png',
     name: 'Mediterranean Quinoa Salad',
-    title: 'Healthy, tasty, and easy to prepare',
+    title: 'Healthy, tasty, and easy to prepare.',
     categories: [
       { id: 4, name: 'vegetarian' },
       { id: 5, name: 'vegan' },
     ],
     time: 20,
-    ingredients: 'Quinoa, tomato, cucumber, olives ...',
-    instructions: 'Cook quinoa, chop veggies, mix with dressing',
+    peopleToServe: 4, 
+    difficultyLevel: 1, 
+    ingredients: [
+      { subcategory: 'Grains', quantity: '200g', name: 'Quinoa' },
+      { subcategory: 'Vegetables', quantity: '100g', name: 'Tomato' },
+      { subcategory: 'Vegetables', quantity: '100g', name: 'Cucumber' },
+      { subcategory: 'Condiments', quantity: '50g', name: 'Olives' },
+    ],
+    instructions: [
+      { step: 1, description: 'Cook the quinoa according to package instructions.' },
+      { step: 2, description: 'Chop the vegetables into bite-sized pieces.' },
+      { step: 3, description: 'Mix quinoa and vegetables with dressing.' },
+      { step: 4, description: 'Serve chilled or at room temperature.' },
+    ],
   },
   {
     image: 'cheesecake.png',
     name: 'New York Cheesecake',
-    title: 'Creamy and timeless classic',
+    title: 'Creamy and timeless classic.',
     categories: [{ id: 6, name: 'dessert' }],
     time: 90,
-    ingredients: 'Cream cheese, sugar, eggs, graham crackers ...',
-    instructions: 'Prepare crust, whip filling, bake in a water bath',
+    peopleToServe: 8, 
+    difficultyLevel: 3, 
+    ingredients: [
+      { subcategory: 'Dairy', quantity: '500g', name: 'Cream Cheese' },
+      { subcategory: 'Sweeteners', quantity: '200g', name: 'Sugar' },
+      { subcategory: 'Eggs', quantity: '4', name: 'Eggs' },
+      { subcategory: 'Crust', quantity: '200g', name: 'Graham Crackers' },
+    ],
+    instructions: [
+      { step: 1, description: 'Prepare the crust by crushing graham crackers and mixing with melted butter.' },
+      { step: 2, description: 'Press the crust mixture into the bottom of a springform pan.' },
+      { step: 3, description: 'Beat the cream cheese with sugar until smooth.' },
+      { step: 4, description: 'Add eggs one at a time, mixing well after each addition.' },
+      { step: 5, description: 'Pour the filling over the crust and bake in a water bath at 160°C for 50 minutes.' },
+      { step: 6, description: 'Allow the cheesecake to cool and chill in the refrigerator before serving.' },
+    ],
   },
   {
     image: 'lasagna.png',
@@ -127,10 +206,23 @@ const recipes = [
       { id: 7, name: 'italian' },
     ],
     time: 60,
-    ingredients:
-      'Pasta sheets, ground beef, tomato sauce, cheese, onions, garlic...',
-    instructions:
-      'Sauté onions and ground beef, add tomato sauce. Layer pasta, sauce, cheese. Bake until golden.',
+    peopleToServe: 6, 
+    difficultyLevel: 2, 
+    ingredients: [
+      { subcategory: 'Pasta', quantity: '250g', name: 'Pasta Sheets' },
+      { subcategory: 'Meat', quantity: '500g', name: 'Ground Beef' },
+      { subcategory: 'Sauce', quantity: '500ml', name: 'Tomato Sauce' },
+      { subcategory: 'Dairy', quantity: '200g', name: 'Cheese' },
+      { subcategory: 'Vegetables', quantity: '100g', name: 'Onions' },
+      { subcategory: 'Flavorings', quantity: '20g', name: 'Garlic' },
+    ],
+    instructions: [
+      { step: 1, description: 'Sauté onions and ground beef until browned.' },
+      { step: 2, description: 'Add tomato sauce and simmer for 20 minutes.' },
+      { step: 3, description: 'Layer pasta sheets, meat sauce, and cheese in a baking dish.' },
+      { step: 4, description: 'Repeat layers and finish with a layer of cheese.' },
+      { step: 5, description: 'Bake in the oven at 180°C for 30 minutes until golden.' },
+    ],
   },
   {
     image: 'caprese.png',
@@ -141,9 +233,19 @@ const recipes = [
       { id: 7, name: 'italian' },
     ],
     time: 15,
-    ingredients: 'Tomatoes, mozzarella, basil, olive oil...',
-    instructions:
-      'Slice tomatoes and mozzarella, layer with basil leaves, drizzle with olive oil and salt.',
+    peopleToServe: 2, 
+    difficultyLevel: 1, 
+    ingredients: [
+      { subcategory: 'Vegetables', quantity: '2', name: 'Tomatoes' },
+      { subcategory: 'Dairy', quantity: '200g', name: 'Mozzarella' },
+      { subcategory: 'Herbs', quantity: '10g', name: 'Basil' },
+      { subcategory: 'Condiments', quantity: '2 tbsp', name: 'Olive Oil' },
+    ],
+    instructions: [
+      { step: 1, description: 'Slice tomatoes and mozzarella.' },
+      { step: 2, description: 'Layer the slices with basil leaves.' },
+      { step: 3, description: 'Drizzle with olive oil and sprinkle with salt.' },
+    ],
   },
   {
     image: 'fish-tacos.png',
@@ -151,9 +253,20 @@ const recipes = [
     title: 'Zesty and flavorful street-style tacos.',
     categories: [{ id: 2, name: 'fish' }],
     time: 25,
-    ingredients: 'White fish fillets, tortillas, cabbage, lime, sauce...',
-    instructions:
-      'Season fish and pan-fry. Assemble in tortillas with shredded cabbage, sauce, and lime juice.',
+    peopleToServe: 3, 
+    difficultyLevel: 1, 
+    ingredients: [
+      { subcategory: 'Protein', quantity: '300g', name: 'White Fish Fillets' },
+      { subcategory: 'Grains', quantity: '8', name: 'Tortillas' },
+      { subcategory: 'Vegetables', quantity: '100g', name: 'Cabbage' },
+      { subcategory: 'Condiments', quantity: '1', name: 'Lime' },
+      { subcategory: 'Sauces', quantity: '50ml', name: 'Salsa' },
+    ],
+    instructions: [
+      { step: 1, description: 'Season the fish and pan-fry until cooked through.' },
+      { step: 2, description: 'Assemble the tacos by placing fish in tortillas.' },
+      { step: 3, description: 'Top with shredded cabbage, sauce, and a squeeze of lime juice.' },
+    ],
   },
   {
     image: 'chicken-alfredo.png',
@@ -164,74 +277,26 @@ const recipes = [
       { id: 7, name: 'italian' },
     ],
     time: 30,
-    ingredients: 'Chicken breast, fettuccine, cream, parmesan, butter...',
-    instructions:
-      'Cook pasta, sauté chicken, add cream and cheese to create sauce, combine and serve.',
-  },
-  {
-    image: 'turkey-pot-pie.png',
-    name: 'Turkey Pot Pie',
-    title: 'Hearty comfort food in a flaky crust.',
-    categories: [{ id: 3, name: 'poultry' }],
-    time: 50,
-    ingredients: 'Turkey, mixed vegetables, gravy, pie crust...',
-    instructions:
-      'Cook turkey and vegetables, fill pie crust with mixture, bake until crust is golden.',
-  },
-  {
-    image: 'vegan-chili.png',
-    name: 'Vegan Chili',
-    title: 'A protein-packed, plant-based stew.',
-    categories: [{ id: 5, name: 'vegan' }],
-    time: 40,
-    ingredients: 'Beans, tomatoes, peppers, onions, spices...',
-    instructions:
-      'Sauté onions and peppers, add tomatoes, beans, and spices, simmer until flavors merge.',
-  },
-  {
-    image: 'lava-cake.png',
-    name: 'Chocolate Lava Cake',
-    title: 'Warm, gooey chocolate center.',
-    categories: [{ id: 6, name: 'dessert' }],
-    time: 25,
-    ingredients: 'Chocolate, butter, eggs, sugar, flour...',
-    instructions:
-      'Melt chocolate and butter, combine with beaten eggs and sugar, bake briefly for molten center.',
-  },
-  {
-    image: 'tiramisu.png',
-    name: 'Tiramisu',
-    title: 'An Italian classic with coffee and mascarpone.',
-    categories: [
-      { id: 6, name: 'dessert' },
-      { id: 7, name: 'italian' },
+    peopleToServe: 4, 
+    difficultyLevel: 1, 
+    ingredients: [
+      { subcategory: 'Protein', quantity: '300g', name: 'Chicken Breast' },
+      { subcategory: 'Grains', quantity: '250g', name: 'Fettuccine' },
+      { subcategory: 'Dairy', quantity: '200ml', name: 'Cream' },
+      { subcategory: 'Dairy', quantity: '100g', name: 'Parmesan Cheese' },
+      { subcategory: 'Fats', quantity: '50g', name: 'Butter' },
     ],
-    time: 45,
-    ingredients: 'Mascarpone, coffee, ladyfingers, cocoa, sugar...',
-    instructions:
-      'Dip ladyfingers in coffee, layer with mascarpone mixture, dust with cocoa, chill before serving.',
+    instructions: [
+      { step: 1, description: 'Cook the fettuccine according to package instructions.' },
+      { step: 2, description: 'Sauté the chicken until cooked through.' },
+      { step: 3, description: 'Add cream and parmesan cheese to create the Alfredo sauce.' },
+      { step: 4, description: 'Combine the cooked fettuccine with the sauce and chicken.' },
+      { step: 5, description: 'Serve hot and garnish with additional parmesan if desired.' },
+    ],
   },
-  {
-    image: 'pad-thai.png',
-    name: 'Pad Thai',
-    title: 'A Thai stir-fried noodle staple.',
-    categories: [{ id: 8, name: 'asian' }],
-    time: 30,
-    ingredients: 'Rice noodles, eggs, bean sprouts, tamarind sauce, peanuts...',
-    instructions:
-      'Soak noodles, stir-fry with sauce and ingredients, garnish with crushed peanuts and lime.',
-  },
-  {
-    image: 'sushi-rolls.png',
-    name: 'Sushi Rolls',
-    title: 'Fresh and customizable Japanese favorite.',
-    categories: [{ id: 8, name: 'asian' }],
-    time: 40,
-    ingredients: 'Sushi rice, nori, fillings (fish or veggies), soy sauce...',
-    instructions:
-      'Prepare sushi rice, place on nori, add fillings, roll tightly, slice into pieces.',
-  },
-]
+];
+
+
 
 async function seed() {
   try {
