@@ -13,6 +13,6 @@ describe('Recipes view ', () => {
     const { findByText } = matchers
 
     expect(await findByText('meat recipes')).toBeInTheDocument()
-    expect(await findByText('Barbecue with meat & veggies')).toBeInTheDocument()
+    expect(await findByText('Barbecue with Meat & Veggies')).toBeInTheDocument()
   })
 })

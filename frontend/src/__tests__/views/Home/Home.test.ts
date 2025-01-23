@@ -1,6 +1,6 @@
 import Home from '@/views/Home/Home.vue'
 import { beforeEach, describe, expect, it } from 'vitest'
-import { renderUsingRouter } from '../../helpers/routing' // or define your own test router
+import { renderUsingRouter } from '../../helpers/routing'
 
 describe('Home view', () => {
   let matchers: ReturnType<typeof renderUsingRouter>
@@ -14,7 +14,7 @@ describe('Home view', () => {
     // loading text appears while the query is resolving.
     expect(await findByText('Loading recipes...')).toBeInTheDocument()
     // wait for query to resolve and read data from card
-    expect(await findByText('Barbecue with meat & veggies')).toBeInTheDocument()
+    expect(await findByText('Barbecue with Meat & Veggies')).toBeInTheDocument()
     // loading test is gone
     expect(queryByText('Loading recipes...')).not.toBeInTheDocument()
   })
