@@ -13,6 +13,10 @@ describe('RecipeCard ', () => {
     const img = container.querySelector('img') as HTMLImageElement
 
     expect(getByText('Barbecue with Meat & Veggies')).toBeInTheDocument()
+<<<<<<< HEAD
+=======
+    expect(getByText('For a summer day with friends.')).toBeInTheDocument()
+>>>>>>> aafbd1964eceda1d2167ccaafd6bb19b4339e134
     expect(img.src).toContain('/images/meat.png')
   })
 })
