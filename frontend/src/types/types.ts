@@ -17,3 +17,9 @@ export type RecipeCategory = {
 export type RecipeCategories = {
   recipeCategories: RecipeCategory[]
 }
+
+export type RecipeInfo = {
+  time: Number
+  difficultyLevel: Number
+  serves: Number
+}
