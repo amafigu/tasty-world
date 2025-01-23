@@ -1,7 +1,7 @@
 import { GET_RECIPES } from '@/graphql/queries'
 import { describe, expect, it } from 'vitest'
 import { mockApolloClient } from '../helpers/apolloClient'
-import { recipesMock } from '../mocks/data/recipesMock' // <— import your mock array
+import { recipesMock } from '../mocks/data/recipesMock'
 
 describe('GET_RECIPES query', () => {
   it('returns recipes succesfully', async () => {
