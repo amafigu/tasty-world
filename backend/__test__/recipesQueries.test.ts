@@ -1,15 +1,15 @@
 // GraphQL operations against schema and resolvers directly with server.executeOperation
 // Without an actual HTTP request - Integration Test
 
-import { recipeModelMock } from '../mocks/models/modelsMock'
 import { recipesMock } from '../mocks/data/recipesMock'
+import { recipesModelMock } from '../mocks/models/modelsMock'
 // avoid  ReferenceError: Cannot access 'modelsMock_1' before initialization
-jest.mock('../src/models', () => recipeModelMock)
+jest.mock('../src/models', () => recipesModelMock)
 
 import { ApolloServer } from 'apollo-server-express'
-import { typeDefs } from '../src/schema'
-import { resolvers } from '../src/resolvers'
 import { GET_RECIPES } from '../mocks/queries/clientQueries'
+import { resolvers } from '../src/resolvers'
+import { typeDefs } from '../src/schema'
 
 describe('Server integrates recipe schema and resolvers also ', () => {
   let server: ApolloServer

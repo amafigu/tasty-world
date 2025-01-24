@@ -1,48 +1,78 @@
 <template>
-  <article class="recipe-card">
-    <img class="image" :src="`/images/${recipe.image}`" />
-    <h3>{{ recipe.name }}</h3>
-    <div class="details">
-      <h4>{{ recipe.title }}</h4>
-    </div>
-  </article>
+  <RouterLink
+    :to="`${RECIPES}/${recipe.categories[0].name}/${recipe.name}`"
+    class="router-link"
+  >
+    <article class="recipe-card">
+      <div class="image-container">
+        <img class="image" :src="`/images/${recipe.image}`" />
+      </div>
+      <span class="recipe-name">{{ recipe.name }}</span>
+      <div class="details">
+        <FontAwesomeIcon icon="fa-solid fa-clock" /> {{ recipe.time }}
+      </div>
+    </article>
+  </RouterLink>
 </template>
 
-<script setup>
-const props = defineProps({
-  recipe: Object,
-})
+<script setup lang="ts">
+import { RouterLink } from 'vue-router'
+import { RECIPES } from '@/constants/routes'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import type { Recipe } from '@/types'
+
+interface RecipeCardProps {
+  recipe: Recipe
+}
+
+const props = defineProps<RecipeCardProps>()
 </script>
 
 <style scoped>
 .recipe-card {
-  width: 300px;
-  height: 420px;
-  box-shadow: var(--box-shadow-primary);
+  width: 100%;
+  height: auto;
   overflow: hidden;
 }
 
-@media (min-width: 600px) {
-  .recipe-card {
-    width: 320px;
-    height: 460px;
-  }
+.router-link {
+  color: black;
+  text-decoration: none;
+}
+
+.image-container {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  border-radius: 16px;
+  margin-block-end: 1rem;
 }
 
 .image {
   width: 100%;
-  height: 300px;
   object-fit: cover;
   border-radius: var(--border-radius-small);
+  aspect-ratio: 3 / 4;
 }
 
-@media (min-width: 600px) {
-  .image {
-    height: 320px;
-  }
+.recipe-name {
+  margin-top: 0.5rem;
+  color: var(--font-color-secondary);
+  font-size: 1.125rem;
+  text-transform: uppercase;
+  font-weight: 600;
 }
 
 .details {
-  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--font-color-secondary);
+}
+
+@media (min-width: 900px) {
+  .cards-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 </style>

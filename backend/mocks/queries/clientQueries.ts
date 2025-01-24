@@ -9,16 +9,25 @@ export const GET_RECIPES = `
         name
       }
       time
-      ingredients
-      instructions
+      peopleToServe
+      difficultyLevel
+      ingredients {
+        subcategory
+        quantity
+        name
+      }
+      instructions {
+        step
+        description
+      }
       title
     }
   }
 `
 
 export const GET_RECIPE = `
-  query GetRecipe($id: ID!) {
-    recipe(id: $id) {
+  query GetRecipe($name: String!) {
+    recipe(name: $name) {
       id
       name
       image
@@ -27,8 +36,17 @@ export const GET_RECIPE = `
         name
       }
       time
-      ingredients
-      instructions
+      peopleToServe
+      difficultyLevel
+      ingredients {
+        subcategory
+        quantity
+        name
+      }
+      instructions {
+        step
+        description
+      }
       title
     }
   }

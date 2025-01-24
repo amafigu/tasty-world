@@ -8,8 +8,21 @@ export const typeDefs = gql`
     title: String!
     categories: [RecipeCategory]!
     time: Int!
-    ingredients: String!
-    instructions: String!
+    peopleToServe: Int!
+    difficultyLevel: Int!
+    ingredients: [Ingredient]!
+    instructions: [InstructionStep]!
+  }
+
+  type Ingredient {
+    subcategory: String
+    quantity: String!
+    name: String!
+  }
+
+  type InstructionStep {
+    step: Int!
+    description: String!
   }
 
   type RecipeCategory {
@@ -17,15 +30,20 @@ export const typeDefs = gql`
     name: String!
   }
 
+  type Query {
+    recipes: [Recipe]
+    recipe(name: String!): Recipe
+    recipeCategories: [RecipeCategory]
+  }
+`
+/*
+TODO: Fix the mutation 
+
+
+  type 
   input RecipeCategoryInput {
     id: ID!
     name: String!
-  }
-
-  type Query {
-    recipes: [Recipe]
-    recipe(id: ID!): Recipe
-    recipeCategories: [RecipeCategory]
   }
 
   type Mutation {
@@ -38,5 +56,4 @@ export const typeDefs = gql`
       ingredients: String!
       instructions: String!
     ): Recipe
-  }
-`
+  }*/

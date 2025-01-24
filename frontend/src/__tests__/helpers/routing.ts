@@ -1,6 +1,7 @@
 import { ABOUT, HOME, RECIPES } from '@/constants/routes'
 import About from '@/views/About/About.vue'
 import Home from '@/views/Home/Home.vue'
+import RecipeDetails from '@/views/RecipeDetails/RecipeDetails.vue'
 import Recipes from '@/views/Recipes/Recipes.vue'
 import {
   type RenderOptions,
@@ -17,6 +18,10 @@ export const routes = [
   { path: HOME, component: Home },
   { path: `${RECIPES}/:category`, component: Recipes },
   { path: ABOUT, component: About },
+  {
+    path: `${RECIPES}/:category/:recipe`,
+    component: RecipeDetails,
+  },
 ]
 
 export const router = createRouter({
@@ -27,7 +32,7 @@ export const router = createRouter({
 // TODO: do not use unknown
 export function renderUsingRouter<T = unknown>(
   component: Component,
-  options?: RenderOptions<T>
+  options?: RenderOptions<T>,
 ): RenderResult {
   const apolloClient = mockApolloClient()
   return render(component, {
