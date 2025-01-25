@@ -1,7 +1,7 @@
 <template>
   <div>
     <Carousel v-bind="settings" :breakpoints="breakpoints" class="slider">
-      <Slide class="slider-item" v-for="item in items" :key="item">
+      <Slide class="slider-item" v-for="item in items" :key="item.id">
         <RecipeCard :recipe="item" />
       </Slide>
       <template #addons>
@@ -13,46 +13,54 @@
 
 <script setup lang="ts">
 import RecipeCard from '@/components/RecipeCard/RecipeCard.vue'
-import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
+import { Carousel, Slide, Navigation } from 'vue3-carousel'
+import type { Recipe } from '@/types/types'
 import 'vue3-carousel/dist/carousel.css'
 
-const props = defineProps({
-  items: Array,
-})
-
-const settings = {
-  itemsToShow: 1,
-  snapAlign: 'center',
-  //  autoplay: 6000,
+interface SliderProps {
+  items: Recipe[]
 }
 
-const breakpoints = {
-  // Mobile
+defineProps<SliderProps>()
+
+type SnapAlignOptions = 'center' | 'start' | 'end' | 'center-even' | 'center-odd'
+
+interface CarouselSettings {
+  itemsToShow: number
+  snapAlign: SnapAlignOptions
+}
+
+const settings: CarouselSettings = {
+  itemsToShow: 1,
+  snapAlign: 'center',
+}
+
+interface BreakpointSettings {
+  itemsToShow: number
+  snapAlign: SnapAlignOptions
+}
+
+const breakpoints: Record<number, BreakpointSettings> = {
   600: {
     itemsToShow: 1,
     snapAlign: 'center',
   },
-  // Tablet
   768: {
     itemsToShow: 1.5,
     snapAlign: 'center',
   },
-  // Tablet Wide
   900: {
     itemsToShow: 2,
     snapAlign: 'center',
   },
-  // Desktop
   1024: {
     itemsToShow: 2.5,
     snapAlign: 'center',
   },
-  // Widescreen
   1280: {
     itemsToShow: 3,
     snapAlign: 'center',
   },
-  // Fullscreen
   1600: {
     itemsToShow: 4,
     snapAlign: 'center',

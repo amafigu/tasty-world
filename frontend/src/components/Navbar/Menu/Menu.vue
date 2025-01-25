@@ -83,7 +83,7 @@ const categories = computed(() => {
 .separator::after {
   content: '';
   flex: 1;
-  border-top: 1px solid rgb(227, 227, 227);
+  border-top: 1px solid rgb(227 227 227);
 }
 
 .separator::before {
@@ -115,12 +115,11 @@ const categories = computed(() => {
 }
 
 .link a {
-  text-decoration: none;
   color: var(--font-color-primary);
   font-size: 1.25rem;
   font-weight: 500;
   transition: color 0.3s ease, text-decoration-color 0.3s ease;
-  text-decoration: underline 1px solid rgb(0, 0, 0);
+  text-decoration: underline 1px solid rgb(0 0 0);
   text-underline-offset: 0.15em;
 }
 

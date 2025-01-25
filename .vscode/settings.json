@@ -1,6 +1,8 @@
 {
   "editor.formatOnSave": true,
-  "editor.formatOnPaste": true,
+   "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -26,10 +28,19 @@
   "terminal.integrated.fontSize": 12,
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+ 
+  
+ "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue",
+  ],
+  "eslint.options": {
+    "extensions": [".js", ".jsx", ".ts", ".tsx", ".vue"]
   },
-  "eslint.validate": ["javascript", "typescript", "vue"],
   "prettier.requireConfig": true,
-  "files.autoSave": "onFocusChange"
+  "files.autoSave": "onFocusChange",
+  "typescript.tsdk": "node_modules/typescript/lib",
 }

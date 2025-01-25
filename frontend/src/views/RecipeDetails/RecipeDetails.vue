@@ -54,18 +54,11 @@
           <div class="ingredients">
             <h4 class="ingredients-steps-title">Ingredients</h4>
             <ul class="ingredients-list">
-              <template
-                v-for="(ingredients, category) in ingredientsBySubcategory"
-                :key="category"
-              >
+              <template v-for="(ingredients, category) in ingredientsBySubcategory" :key="category">
                 <li v-if="category" class="ingredients-category-title">
                   {{ category }}
                 </li>
-                <li
-                  v-for="(ingredient, index) in ingredients"
-                  :key="index"
-                  class="ingredient-item"
-                >
+                <li v-for="(ingredient, index) in ingredients" :key="index" class="ingredient-item">
                   {{ ingredient.quantity }} {{ ingredient.name }}
                 </li>
               </template>
@@ -92,8 +85,7 @@
 
 <script setup lang="ts">
 import { GET_RECIPE } from '@/graphql/queries'
-import type { Ingredient, Recipe } from '@/types'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import type { Ingredient, Recipe } from '@/types/types'
 import { useQuery } from '@vue/apollo-composable'
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
@@ -116,7 +108,7 @@ const sortedInstructions = computed(() => {
 const ingredientsBySubcategory = computed(() => {
   const sortedIngredients: { [key: string]: Ingredient[] } = {}
 
-  recipeData.value?.ingredients.forEach((ingredient) => {
+  recipeData.value?.ingredients.forEach(ingredient => {
     const subcategory = ingredient.subcategory || ''
     if (!sortedIngredients[subcategory]) {
       sortedIngredients[subcategory] = []
@@ -141,7 +133,7 @@ const ingredientsBySubcategory = computed(() => {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 1rem 1rem 0 1rem;
+  padding: 1rem 1rem 0;
 }
 
 .ingredients-instructions-container {
@@ -225,10 +217,9 @@ const ingredientsBySubcategory = computed(() => {
   font-size: 1.5rem;
   font-weight: 800;
   text-transform: uppercase;
-  margin-block-start: 0;
-  margin-block-end: 1, 5rem;
+  margin-block: 0 1, 5rem;
   text-align: center;
-  color: rgb(51, 113, 121);
+  color: rgb(51 113 121);
 }
 
 .ingredients-category-title {
@@ -236,12 +227,12 @@ const ingredientsBySubcategory = computed(() => {
   display: flex;
   letter-spacing: 0.04em;
   align-items: center;
-  color: rgb(51, 113, 121);
+  color: rgb(51 113 121);
   font-size: 1.25rem;
   margin: 1rem 0;
 }
 
-.ingredients-item:not(:first-child):before {
+.ingredients-item:not(:first-child)::before {
   content: '';
   display: block;
   margin-block: 16px;
@@ -279,7 +270,7 @@ const ingredientsBySubcategory = computed(() => {
 .ingredients,
 .instructions {
   background-color: #fff;
-  padding: 1.5rem 1.5rem;
+  padding: 1.5rem;
   border-radius: 8px;
 }
 
@@ -292,10 +283,9 @@ const ingredientsBySubcategory = computed(() => {
   font-weight: 800;
   text-transform: uppercase;
   margin-bottom: 2rem;
-  color: rgb(51, 113, 121);
+  color: rgb(51 113 121);
   text-align: center;
-  margin-block-start: 0;
-  margin-block-end: 1.5rem;
+  margin-block: 0 1.5rem;
 }
 
 .instructions-list {
@@ -313,7 +303,7 @@ const ingredientsBySubcategory = computed(() => {
 .instruction-step {
   font-size: 1.25rem;
   font-weight: 800;
-  color: rgb(51, 113, 121);
+  color: rgb(51 113 121);
   margin-right: 1rem;
   flex-shrink: 0;
 }
@@ -326,7 +316,7 @@ const ingredientsBySubcategory = computed(() => {
   flex: 1;
 }
 
-@media only screen and (min-width: 601px) {
+@media only screen and (width >= 601px) {
   .title-image-container {
     display: grid;
     grid-template-columns: 1fr 1fr;

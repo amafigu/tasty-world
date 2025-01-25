@@ -1,24 +1,12 @@
 <template>
   <div class="links-container">
-    <RouterLink
-      :to="'/'"
-      data-testid="breadcrumb-home-link"
-      class="breadcrumb-link"
-    >
+    <RouterLink :to="'/'" data-testid="breadcrumb-home-link" class="breadcrumb-link">
       Home /
     </RouterLink>
-    <RouterLink
-      :to="categoryLink"
-      data-testid="breadcrumb-category-link"
-      class="breadcrumb-link"
-    >
+    <RouterLink :to="categoryLink" data-testid="breadcrumb-category-link" class="breadcrumb-link">
       {{ categoryName }} /
     </RouterLink>
-    <RouterLink
-      :to="recipeLink"
-      data-testid="breadcrumb-recipe-link"
-      class="breadcrumb-link"
-    >
+    <RouterLink :to="recipeLink" data-testid="breadcrumb-recipe-link" class="breadcrumb-link">
       {{ recipeName }}
     </RouterLink>
   </div>
@@ -30,8 +18,8 @@ import { RECIPES } from '@/constants/routes'
 import { computed } from 'vue'
 const route = useRoute()
 
-const recipeName = computed<string>(() =>
-  route.params?.recipe ? route.params?.recipe : '',
+const recipeName = computed<string | string[]>(() =>
+  route.params?.recipe ? route.params?.recipe : ''
 )
 
 const categoryLink = computed<string>(() => {
@@ -39,7 +27,7 @@ const categoryLink = computed<string>(() => {
   return `${RECIPES}/${category}`
 })
 
-const categoryName = computed<string>(() => route.params.category)
+const categoryName = computed<string | string[]>(() => route.params.category)
 
 const recipeLink = computed<string>(() => {
   const category = route.params?.category ? route.params?.category : ''

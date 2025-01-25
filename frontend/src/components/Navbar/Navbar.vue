@@ -99,12 +99,11 @@ const isOpen: Ref<boolean> = ref(false)
 }
 
 .link a {
-  text-decoration: none;
   color: var(--font-color-primary);
   font-size: 1.25rem;
   font-weight: 500;
   transition: color 0.3s ease, text-decoration-color 0.3s ease;
-  text-decoration: underline 1px solid rgb(0, 0, 0);
+  text-decoration: underline 1px solid rgb(0 0 0);
   text-underline-offset: 0.15em;
 }
 
@@ -146,10 +145,12 @@ const isOpen: Ref<boolean> = ref(false)
 .slide-leave-active {
   transition: transform 0.5s ease;
 }
+
 .slide-enter-from,
 .slide-leave-to {
   transform: translateX(-100%);
 }
+
 .slide-enter-to,
 .slide-leave-from {
   transform: translateX(0);
@@ -167,7 +168,7 @@ const isOpen: Ref<boolean> = ref(false)
   background-color: var(--background-color-primary);
 }
 
-@media only screen and (min-width: 978px) {
+@media only screen and (width >= 978px) {
   .navbar {
     grid-template-rows: 3fr 2fr;
     grid-template-columns: 4fr 1fr 4fr;
@@ -211,8 +212,7 @@ const isOpen: Ref<boolean> = ref(false)
 
   .icon-container {
     grid-area: icon;
-    justify-self: flex-end;
-    align-self: center;
+    place-self: center flex-end;
   }
 
   .searchbar-container {
@@ -234,6 +234,7 @@ const isOpen: Ref<boolean> = ref(false)
 .slide-leave-to {
   transform: translateX(-100%);
 }
+
 .slide-enter-to,
 .slide-leave-from {
   transform: translateX(0);

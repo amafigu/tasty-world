@@ -1,16 +1,11 @@
 <template>
-  <RouterLink
-    :to="`${RECIPES}/${recipe.categories[0].name}/${recipe.name}`"
-    class="router-link"
-  >
+  <RouterLink :to="`${RECIPES}/${recipe.categories[0].name}/${recipe.name}`" class="router-link">
     <article class="recipe-card">
       <div class="image-container">
         <img class="image" :src="`/images/${recipe.image}`" />
       </div>
       <span class="recipe-name">{{ recipe.name }}</span>
-      <div class="details">
-        <FontAwesomeIcon icon="fa-solid fa-clock" /> {{ recipe.time }}
-      </div>
+      <div class="details"><FontAwesomeIcon icon="fa-solid fa-clock" /> {{ recipe.time }}</div>
     </article>
   </RouterLink>
 </template>
@@ -19,13 +14,13 @@
 import { RouterLink } from 'vue-router'
 import { RECIPES } from '@/constants/routes'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import type { Recipe } from '@/types'
+import type { Recipe } from '@/types/types'
 
 interface RecipeCardProps {
   recipe: Recipe
 }
 
-const props = defineProps<RecipeCardProps>()
+defineProps<RecipeCardProps>()
 </script>
 
 <style scoped>
@@ -70,7 +65,7 @@ const props = defineProps<RecipeCardProps>()
   color: var(--font-color-secondary);
 }
 
-@media (min-width: 900px) {
+@media (width >= 900px) {
   .cards-container {
     grid-template-columns: 1fr 1fr 1fr;
   }
