@@ -8,12 +8,10 @@
       data-testid="search-input"
       v-model="search"
     />
-    <div class="search-list">
-      <SearchItem
-        v-for="item in filteredItems"
-        :recipe="item"
-        @click="search = ''"
-      />
+    <div v-if="error">Can not fetch items</div>
+    <div v-else-if="loading">loading items</div>
+    <div v-else class="search-list">
+      <SearchItem v-for="item in filteredItems" :recipe="item" @click="search = ''" />
     </div>
   </div>
 </template>
@@ -23,8 +21,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { computed, ref, Ref } from 'vue'
 import { useQuery } from '@vue/apollo-composable'
 import { GET_RECIPES } from '@/graphql/queries'
-import { RECIPES } from '@/constants/routes'
-import { Recipe } from '@/constants/types'
+import { Recipe } from '@/types/types'
 import SearchItem from '@/components/SearchItem/SearchItem.vue'
 
 const { loading, error, result } = useQuery(GET_RECIPES)
@@ -37,9 +34,7 @@ const filteredItems = computed<Recipe[]>(() => {
   }
 
   return recipes
-    .filter((item) =>
-      item.name.toLowerCase().includes(search.value.trim().toLowerCase()),
-    )
+    .filter((item: Recipe) => item.name.toLowerCase().includes(search.value.trim().toLowerCase()))
     .slice(0, 5)
 })
 </script>

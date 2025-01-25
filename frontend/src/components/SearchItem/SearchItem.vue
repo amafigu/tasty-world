@@ -10,9 +10,7 @@
       </div>
       <div class="name-details-container">
         <span class="recipe-name">{{ recipe.name }}</span>
-        <div class="details">
-          <FontAwesomeIcon icon="fa-solid fa-clock" /> {{ recipe.time }}
-        </div>
+        <div class="details"><FontAwesomeIcon icon="fa-solid fa-clock" /> {{ recipe.time }}</div>
       </div>
     </div>
   </RouterLink>
@@ -22,13 +20,13 @@
 import { RouterLink } from 'vue-router'
 import { RECIPES } from '@/constants/routes'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import type { Recipe } from '@/types'
+import type { Recipe } from '@/types/types'
 
 interface RecipeCardProps {
   recipe: Recipe
 }
 
-const props = defineProps<RecipeCardProps>()
+defineProps<RecipeCardProps>()
 </script>
 
 <style scoped>
@@ -46,6 +44,7 @@ const props = defineProps<RecipeCardProps>()
 .search-item:hover {
   background-color: #f4f6f7;
 }
+
 .router-link {
   color: black;
   text-decoration: none;
@@ -65,7 +64,6 @@ const props = defineProps<RecipeCardProps>()
 
 .image {
   height: 100%;
-  -o-object-fit: cover;
   object-fit: cover;
   transition: transform 0.35s;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -90,7 +88,7 @@ const props = defineProps<RecipeCardProps>()
   gap: 0.5rem;
 }
 
-@media (min-width: 900px) {
+@media (width >= 900px) {
   .cards-container {
     grid-template-columns: 1fr 1fr 1fr;
   }
