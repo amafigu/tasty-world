@@ -21,6 +21,7 @@ import { useRoute } from 'vue-router'
 import { GET_RECIPES } from '@/graphql/queries'
 import RecipeCard from '@/components/RecipeCard/RecipeCard.vue'
 import Breadcrumb from '@/components/Breadcrumb/Breadcrumb.vue'
+import { Recipe } from '@/types/types'
 
 const { result, loading, error } = useQuery(GET_RECIPES)
 const route = useRoute()
@@ -30,8 +31,8 @@ const filteredRecipes = computed(() => {
   const categoriesParam = route.params.category
   const recipes = result.value?.recipes ?? []
 
-  return recipes.filter((recipe) =>
-    recipe.categories.some((cat) => cat.name === categoriesParam),
+  return recipes.filter((recipe: Recipe) =>
+    recipe.categories.some(cat => cat.name === categoriesParam)
   )
 })
 </script>
@@ -55,6 +56,7 @@ const filteredRecipes = computed(() => {
 .page-container {
   width: 80%;
 }
+
 .slider-container {
   width: 100%;
 }
@@ -69,19 +71,19 @@ const filteredRecipes = computed(() => {
   letter-spacing: 0.02em;
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (width >= 600px) {
   .cards-container {
     grid-template-columns: 1fr 1fr;
   }
 }
 
-@media only screen and (min-width: 900px) {
+@media only screen and (width >= 900px) {
   .cards-container {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (width >= 1200px) {
   .cards-container {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
