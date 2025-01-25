@@ -28,9 +28,11 @@ const recipes = computed<Recipe[]>(() => {
   display: flex;
   justify-content: center;
 }
+
 .page-container {
   width: 80%;
 }
+
 .slider-container {
   width: 100%;
 }
