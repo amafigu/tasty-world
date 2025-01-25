@@ -1,6 +1,6 @@
 :root {
-  --font-color-primary: rgb(37, 74, 93);
-  --font-color-secondary: rgb(51, 113, 121);
+  --font-color-primary: rgb(37 74 93);
+  --font-color-secondary: rgb(51 113 121);
   --font-color-tertiary: #337179;
   --font-size-regular: 1.25rem;
   --font-weight-regular: 500;
@@ -10,8 +10,8 @@
   --spacing-regular: 2rem;
   --border-radius-small: 4px;
   --border-radius-medium: 8px;
-  --box-shadow-primary: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 2px 4px 2px;
+  --box-shadow-primary: rgb(60 64 67 / 30%) 0px 1px 2px 0px,
+    rgb(60 64 67 / 15%) 0px 2px 4px 2px;
   --z-index-mobile-menu: 1000;
   --spacing-mobile-page-border: 1.5rem;
 }
