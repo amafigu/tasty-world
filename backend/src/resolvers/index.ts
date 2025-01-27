@@ -1,5 +1,5 @@
 import db from '../models/index'
-
+import { Recipe } from '../types/types'
 export const resolvers = {
   Query: {
     recipes: async () => {
@@ -15,7 +15,7 @@ export const resolvers = {
     // In resolvers, the 2nd argument is an object containing all the arguments passed to the field
     // id is the arguments object with the shape { id: <ID> }.
     // need to destructure the argument, like so:
-    recipe: async (_: any, { name }: { name: string }) => {
+    recipe: async (_: Recipe, { name }: { name: string }) => {
       try {
         return await db.recipes.findOne({
           where: {
