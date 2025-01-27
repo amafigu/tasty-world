@@ -8,7 +8,7 @@
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
     "test": "vitest",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src",
+    "lint": "eslint \"src/**/*.{ts,tsx,vue}\"",
     "format": "prettier .  --write",
     "stylelint": "stylelint \"src/**/*.{css,vue}\"",
     "stylelint:fix": "stylelint \"src/**/*.{css,vue}\" --fix"
@@ -33,7 +33,7 @@
     "@types/node": "^20.14.2",
     "@vitejs/plugin-vue": "^5.0.5",
     "@vue/eslint-config-typescript": "^14.2.0",
-    "eslint": "^9.18.0",
+    "eslint": "^8.57.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-vue": "^9.32.0",
