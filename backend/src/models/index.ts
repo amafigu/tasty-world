@@ -5,8 +5,7 @@ import RecipeCategory from './recipeCategories'
 import RecipeRecipeCategory from './recipeRecipeCategories'
 
 dotenv.config()
-const envFile =
-  process.env.NODE_ENV === 'production' ? '.env.production' : '.env.development'
+const envFile = process.env.NODE_ENV === 'production' ? '.env.production' : '.env.development'
 dotenv.config({ path: envFile })
 
 const sequelize = new Sequelize(process.env.DB_URL!, {

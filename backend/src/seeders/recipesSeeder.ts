@@ -1,8 +1,7 @@
-import dotenv from 'dotenv';
-import db from '../models/index';
+import dotenv from 'dotenv'
+import db from '../models/index'
 
-const envFile =
-  process.env.NODE_ENV === 'production' ? '.env.production' : '.env.development'
+const envFile = process.env.NODE_ENV === 'production' ? '.env.production' : '.env.development'
 
 dotenv.config({ path: envFile })
 
@@ -13,12 +12,11 @@ const recipes = [
     title: 'For a summer day with friends.',
     categories: [{ id: 1, name: 'meat' }],
     time: 30,
-    peopleToServe: 4, 
-    difficultyLevel: 2, 
+    peopleToServe: 4,
+    difficultyLevel: 2,
     ingredients: [
       { subcategory: 'Meat', quantity: '400g', name: 'Beef' },
       { subcategory: 'Vegetables', quantity: '300g', name: 'Mixed Vegetables' },
-      
     ],
     instructions: [
       { step: 1, description: 'Make fire.' },
@@ -34,8 +32,8 @@ const recipes = [
       { id: 7, name: 'italian' },
     ],
     time: 60,
-    peopleToServe: 2, 
-    difficultyLevel: 2, 
+    peopleToServe: 2,
+    difficultyLevel: 2,
     ingredients: [
       { subcategory: 'Dough', quantity: '200g', name: 'Flour' },
       { subcategory: 'Sauce', quantity: '100ml', name: 'Tomato Sauce' },
@@ -57,8 +55,8 @@ const recipes = [
       { id: 8, name: 'asian' },
     ],
     time: 30,
-    peopleToServe: 3, 
-    difficultyLevel: 1, 
+    peopleToServe: 3,
+    difficultyLevel: 1,
     ingredients: [
       { subcategory: 'Protein', quantity: '2', name: 'Eggs' },
       { subcategory: 'Vegetables', quantity: '100g', name: 'Tomato' },
@@ -77,8 +75,8 @@ const recipes = [
     title: 'Fresh, good-looking, and delicious.',
     categories: [{ id: 2, name: 'fish' }],
     time: 40,
-    peopleToServe: 2, 
-    difficultyLevel: 2, 
+    peopleToServe: 2,
+    difficultyLevel: 2,
     ingredients: [
       { subcategory: 'Fish', quantity: '300g', name: 'Salmon' },
       { subcategory: 'Vegetables', quantity: '100g', name: 'Tomato' },
@@ -93,12 +91,12 @@ const recipes = [
   },
   {
     image: 'meatball.png',
-    name: 'Grandma\'s Meatballs',
+    name: "Grandma's Meatballs",
     title: 'Impress your friends with this traditional plate.',
     categories: [{ id: 1, name: 'meat' }],
     time: 20,
-    peopleToServe: 4, 
-    difficultyLevel: 1, 
+    peopleToServe: 4,
+    difficultyLevel: 1,
     ingredients: [
       { subcategory: 'Meat', quantity: '500g', name: 'Ground Beef' },
       { subcategory: 'Greens', quantity: '50g', name: 'Ruccola' },
@@ -116,8 +114,8 @@ const recipes = [
     title: 'Make your vegan friends happy.',
     categories: [{ id: 5, name: 'vegan' }],
     time: 30,
-    peopleToServe: 2, 
-    difficultyLevel: 1, 
+    peopleToServe: 2,
+    difficultyLevel: 1,
     ingredients: [
       { subcategory: 'Buns', quantity: '2', name: 'Burger Buns' },
       { subcategory: 'Vegetables', quantity: '50g', name: 'Tomato' },
@@ -136,8 +134,8 @@ const recipes = [
     title: 'Zesty and flavorful.',
     categories: [{ id: 3, name: 'poultry' }],
     time: 35,
-    peopleToServe: 3, 
-    difficultyLevel: 1, 
+    peopleToServe: 3,
+    difficultyLevel: 1,
     ingredients: [
       { subcategory: 'Protein', quantity: '500g', name: 'Chicken' },
       { subcategory: 'Flavorings', quantity: '50g', name: 'Lemon' },
@@ -159,8 +157,8 @@ const recipes = [
       { id: 5, name: 'vegan' },
     ],
     time: 20,
-    peopleToServe: 4, 
-    difficultyLevel: 1, 
+    peopleToServe: 4,
+    difficultyLevel: 1,
     ingredients: [
       { subcategory: 'Grains', quantity: '200g', name: 'Quinoa' },
       { subcategory: 'Vegetables', quantity: '100g', name: 'Tomato' },
@@ -180,8 +178,8 @@ const recipes = [
     title: 'Creamy and timeless classic.',
     categories: [{ id: 6, name: 'dessert' }],
     time: 90,
-    peopleToServe: 8, 
-    difficultyLevel: 3, 
+    peopleToServe: 8,
+    difficultyLevel: 3,
     ingredients: [
       { subcategory: 'Dairy', quantity: '500g', name: 'Cream Cheese' },
       { subcategory: 'Sweeteners', quantity: '200g', name: 'Sugar' },
@@ -189,12 +187,22 @@ const recipes = [
       { subcategory: 'Crust', quantity: '200g', name: 'Graham Crackers' },
     ],
     instructions: [
-      { step: 1, description: 'Prepare the crust by crushing graham crackers and mixing with melted butter.' },
+      {
+        step: 1,
+        description: 'Prepare the crust by crushing graham crackers and mixing with melted butter.',
+      },
       { step: 2, description: 'Press the crust mixture into the bottom of a springform pan.' },
       { step: 3, description: 'Beat the cream cheese with sugar until smooth.' },
       { step: 4, description: 'Add eggs one at a time, mixing well after each addition.' },
-      { step: 5, description: 'Pour the filling over the crust and bake in a water bath at 160°C for 50 minutes.' },
-      { step: 6, description: 'Allow the cheesecake to cool and chill in the refrigerator before serving.' },
+      {
+        step: 5,
+        description:
+          'Pour the filling over the crust and bake in a water bath at 160°C for 50 minutes.',
+      },
+      {
+        step: 6,
+        description: 'Allow the cheesecake to cool and chill in the refrigerator before serving.',
+      },
     ],
   },
   {
@@ -206,8 +214,8 @@ const recipes = [
       { id: 7, name: 'italian' },
     ],
     time: 60,
-    peopleToServe: 6, 
-    difficultyLevel: 2, 
+    peopleToServe: 6,
+    difficultyLevel: 2,
     ingredients: [
       { subcategory: 'Pasta', quantity: '250g', name: 'Pasta Sheets' },
       { subcategory: 'Meat', quantity: '500g', name: 'Ground Beef' },
@@ -233,8 +241,8 @@ const recipes = [
       { id: 7, name: 'italian' },
     ],
     time: 15,
-    peopleToServe: 2, 
-    difficultyLevel: 1, 
+    peopleToServe: 2,
+    difficultyLevel: 1,
     ingredients: [
       { subcategory: 'Vegetables', quantity: '2', name: 'Tomatoes' },
       { subcategory: 'Dairy', quantity: '200g', name: 'Mozzarella' },
@@ -253,8 +261,8 @@ const recipes = [
     title: 'Zesty and flavorful street-style tacos.',
     categories: [{ id: 2, name: 'fish' }],
     time: 25,
-    peopleToServe: 3, 
-    difficultyLevel: 1, 
+    peopleToServe: 3,
+    difficultyLevel: 1,
     ingredients: [
       { subcategory: 'Protein', quantity: '300g', name: 'White Fish Fillets' },
       { subcategory: 'Grains', quantity: '8', name: 'Tortillas' },
@@ -277,8 +285,8 @@ const recipes = [
       { id: 7, name: 'italian' },
     ],
     time: 30,
-    peopleToServe: 4, 
-    difficultyLevel: 1, 
+    peopleToServe: 4,
+    difficultyLevel: 1,
     ingredients: [
       { subcategory: 'Protein', quantity: '300g', name: 'Chicken Breast' },
       { subcategory: 'Grains', quantity: '250g', name: 'Fettuccine' },
@@ -294,9 +302,7 @@ const recipes = [
       { step: 5, description: 'Serve hot and garnish with additional parmesan if desired.' },
     ],
   },
-];
-
-
+]
 
 async function seed() {
   try {
@@ -314,11 +320,9 @@ async function seed() {
       } else {
         const newRecipe = await db.recipes.create(otherFields)
         if (categories && categories.length > 0) {
-          const categoryIds = categories.map((cat) => cat.id)
+          const categoryIds = categories.map(cat => cat.id)
           await newRecipe.$set('categories', categoryIds)
-          console.log(
-            `Categories ${categories} are settet to recipe ${newRecipe.name}`
-          )
+          console.log(`Categories ${categories} are settet to recipe ${newRecipe.name}`)
         }
       }
     }

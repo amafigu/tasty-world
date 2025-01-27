@@ -1,8 +1,7 @@
 import dotenv from 'dotenv'
 import db from '../models/index'
 
-const envFile =
-  process.env.NODE_ENV === 'production' ? '.env.production' : '.env.development'
+const envFile = process.env.NODE_ENV === 'production' ? '.env.production' : '.env.development'
 
 dotenv.config({ path: envFile })
 

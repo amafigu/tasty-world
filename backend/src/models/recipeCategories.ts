@@ -1,10 +1,4 @@
-import {
-  Column,
-  DataType,
-  Model,
-  Table,
-  BelongsToMany,
-} from 'sequelize-typescript'
+import { Column, DataType, Model, Table, BelongsToMany } from 'sequelize-typescript'
 import Recipe from './recipe'
 import RecipeRecipeCategory from './recipeRecipeCategories'
 

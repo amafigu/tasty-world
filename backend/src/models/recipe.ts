@@ -1,19 +1,12 @@
-import {
-  BelongsToMany,
-  Column,
-  DataType,
-  Model,
-  Table
-} from 'sequelize-typescript';
-import { Ingredient, InstructionStep } from '../types/types';
-import RecipeCategory from './recipeCategories';
-import RecipeRecipeCategory from './recipeRecipeCategories';
+import { BelongsToMany, Column, DataType, Model, Table } from 'sequelize-typescript'
+import { Ingredient, InstructionStep } from '../types/types'
+import RecipeCategory from './recipeCategories'
+import RecipeRecipeCategory from './recipeRecipeCategories'
 
 @Table({
   tableName: 'recipes',
   timestamps: true,
 })
-
 class Recipe extends Model {
   @Column({
     type: DataType.INTEGER,
@@ -63,28 +56,25 @@ class Recipe extends Model {
 
   @Column({
     type: DataType.INTEGER,
-    allowNull: false ,
+    allowNull: false,
     defaultValue: 1,
     validate: {
-      min: 1
+      min: 1,
     },
     field: 'people_to_serve',
   })
-
   public peopleToServe!: number
 
- @Column({
+  @Column({
     type: DataType.NUMBER,
-    allowNull: false ,
+    allowNull: false,
     validate: {
       min: 1,
-      max: 3
+      max: 3,
     },
     field: 'difficulty_level',
   })
-
   public difficultyLevel!: number
-
 }
 
 export default Recipe
